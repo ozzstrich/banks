@@ -200,3 +200,4 @@ brief.txt
 CACHEDIR.TAG
 bin/
 pyvenv.cfg
+data/
