@@ -24,8 +24,9 @@ creds = {
         "domain":os.getenv("SALESFORCE_DOMAIN")
         }
 
-def sf_upload(dict_data):
-    print("Starting sf_upload")
+
+def sf_login():
+    logging.info("Starting sf_login")
     try:
         sf = Salesforce(
             username=creds["username"],
@@ -39,3 +40,19 @@ def sf_upload(dict_data):
         return None
 
     return(sf)
+
+
+def sf_upsert(object_name, data, id_field):
+    logging.info(f"Starting upsert to {object_name} with {len(data)} records")
+    sf = sf_login()
+    logging.info(f"Using bulk API for upserting {len(data)} records")
+    try:
+        results = sf.bulk2_url.__getattr__(object_name).upsert(
+            records=data,
+            external_id_field=id_field
+        )
+        logging.info(f"Upserted {len(data)} records to {object_name}")
+        return results
+    except Exception as e:
+        logging.error(f"Error upserting records to {object_name}: {e}")
+        return None

@@ -26,6 +26,5 @@ def sf_transform_fdic_banks():
     except Exception as e:
         logging.error("Error reading parquet file: %s", str(e))
         return None
-    print(df.head(10), "\n")
     logging.info("Finished sf_transform_fdic_banks")
     return(dict_data)
