@@ -1,5 +1,5 @@
 import query as my_query
-import salesfoce_transform as sf_transform
+import salesforce_transform as sf_transform
 import salesforce_upload as sf_upload
 
 
