@@ -201,3 +201,4 @@ CACHEDIR.TAG
 bin/
 pyvenv.cfg
 data/
+logs/
