@@ -55,8 +55,10 @@ def fdic_top_ten_banks_query():
         
         try:
             output_path = "data/fdic_top_banks_15.parquet"
+            output_path_csv = "data/fdic_top_banks_15.csv"
             os.makedirs(os.path.dirname(output_path), exist_ok=True)
             df.head(15).to_parquet(output_path, index=False)
+            df.head(15).to_csv(output_path_csv, index=False)
             logging.info("Data successfully saved to: %s", output_path)
         except Exception as e:
             logging.error("Failed to save data to file: %s", str(e))
